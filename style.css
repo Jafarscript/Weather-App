@@ -69,3 +69,20 @@ header{
     font-weight: 300;
     font-size: 13px;
 }
+
+@media (max-width: 950px){
+    header{
+        flex-direction: column;
+        padding: 20px 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    header label{
+        margin-top: 20px;
+    }
+
+    .other{
+        padding: 20px 10px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
