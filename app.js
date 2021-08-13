@@ -7,12 +7,13 @@ btn.addEventListener('click', function assign() {
 const getWeather = async () => {
     const getlocation = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
     const location = await getlocation.json();
-    // console.log(location.main.sea_level);
+    console.log(location);
     document.querySelector('.name').innerHTML = location.name;
     document.querySelector('.value1').innerHTML = location.wind.speed + ' mph';
     document.querySelector('.value2').innerHTML = location.main.humidity + ' %';
     document.querySelector('.value3').innerHTML = location.main.pressure + ' hPa';
     document.querySelector('.value5').innerHTML = location.visibility / 100 + ' km';
+    document.querySelector('.dep').innerHTML = `Today: ${location.weather[0].description}`
     document.querySelector('.value6').innerHTML = location.main.sea_level + ' hPa';
     document.querySelector('.value7').innerHTML = location.main.grnd_level + ' hPa';
     document.querySelector('.temp').innerHTML = Math.round(location.main.temp - 273.15) + '<sup>°C</sup>';
