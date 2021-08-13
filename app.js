@@ -1,10 +1,13 @@
 let apiKey = '2341a2abddc990b61f22c2b315450889';
 let city = 'London';
-
+let btn = document.querySelector('.btn');
+btn.addEventListener('click', function assign() {
+    city = document.querySelector('.src').value;
+})
 const getWeather = async () => {
     const getlocation = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
     const location = await getlocation.json();
-    console.log(location);
+    // console.log(location.main.sea_level);
     document.querySelector('.name').innerHTML = location.name;
     document.querySelector('.value1').innerHTML = location.wind.speed + ' mph';
     document.querySelector('.value2').innerHTML = location.main.humidity + ' %';
@@ -29,6 +32,13 @@ const getWeather = async () => {
             document.querySelector('.celc').style.fontWeight = 'bold';
         }
     })
+    if (location.main.sea_level === '' && location.main.grnd_level === '') {
+        console.log(location)
+    } else {
+        document.querySelector('.value6').innerHTML = location.main.pressure + ' hPa';
+        document.querySelector('.value7').innerHTML = location.main.pressure + ' hPa';
+    }
+
 }
 
 getWeather();
